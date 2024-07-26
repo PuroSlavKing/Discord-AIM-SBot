@@ -66,7 +66,7 @@ class Logs(commands.Cog):
             else:
                 attachments = f'\nФайлы: {attachments}'
             json = {"username": "AIM | Delete Message Logger",
-                    "avatar_url": "https://raw.githubusercontent.com/PuroSlavKing/Discord-SBot/main/cogs/icon.png",
+                    "avatar_url": "https://raw.githubusercontent.com/PuroSlavKing/Discord-AIM-SBot/main/cogs/icon.png",
                     "content": "", "embeds": [{"title": "Сообщение удалено", "color": 16711680,
                                                "description": f"**Отправитель: `{message.author}` (`{message.author.id}`)\n```{message.content}```{server}\nКанал: {channel}{attachments}**",
                                                "timestamp": str(datetime.utcnow().isoformat()), "url": "", "author": {},
@@ -91,7 +91,7 @@ class Logs(commands.Cog):
             except:
                 channel = '`Лс`'
             json = {"username": "AIM | Edit Message Logger",
-                    "avatar_url": "https://raw.githubusercontent.com/PuroSlavKing/Discord-SBot/main/cogs/icon.png",
+                    "avatar_url": "https://raw.githubusercontent.com/PuroSlavKing/Discord-AIM-SBot/main/cogs/icon.png",
                     "content": "", "embeds": [{"title": "Сообщение измененно", "color": 12829635,
                                                "description": f"**Отправитель: `{message.author}` (`{message.author.id}`)\nБыло:```{message.content}```\nСтало:```{before.content}```{server}\nКанал: {channel}**",
                                                "timestamp": str(datetime.utcnow().isoformat()), "url": link,
