@@ -69,15 +69,15 @@ class Tools(commands.Cog):
             await self.bot.change_presence(status=sstatus, activity=discord.Activity(type=discord.ActivityType.playing,
                                                                                      application_id=1029430390357774388,
                                                                                      name='Discord', assets={
-                    'large_image': '1029438970666426408', 'large_text': 'github.com/PuroSlavKing/Discord-Selfbot'}))
+                    'large_image': '1029438970666426408', 'large_text': 'github.com/PuroSlavKing/Discord-AIM-SBot'}))
         elif cat in selfbot:
             await self.bot.change_presence(status=sstatus, activity=discord.Activity(type=discord.ActivityType.playing,
                                                                                      application_id=1032671485120229397,
                                                                                      name='Selfbot',
-                                                                                     details='github.com/PuroSlavKing/Discord-Selfbot',
+                                                                                     details='github.com/PuroSlavKing/Discord-AIM-SBot',
                                                                                      assets={
                                                                                          'large_image': '1032672678106116216',
-                                                                                         'large_text': 'github.com/PuroSlavKing/Discord-Selfbot'}))
+                                                                                         'large_text': 'github.com/PuroSlavKing/Discord-AIM-SBot'}))
         else:
             await ctx.message.edit(
                 content="**Доступные варианты: ```Обычные````Watching`, `Listening`, `Playing`, `Streaming` и `Reset`\n\n```Эксклюзивные````Discord`, `Selfbot`**")

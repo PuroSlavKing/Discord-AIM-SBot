@@ -71,7 +71,7 @@ class Logs(commands.Cog):
                                                "description": f"**Отправитель: `{message.author}` (`{message.author.id}`)\n```{message.content}```{server}\nКанал: {channel}{attachments}**",
                                                "timestamp": str(datetime.utcnow().isoformat()), "url": "", "author": {},
                                                "image": {}, "thumbnail": {"url": str(message.author.avatar_url)},
-                                               "footer": {"text": "AIM | github.com/PuroSlavKing/Discord-Selfbot"},
+                                               "footer": {"text": "AIM | github.com/PuroSlavKing/Discord-AIM-SBot"},
                                                "fields": []}], "components": []}
             await send_webhook(config['LOGS']['delete_message_logger_webhook'], json)
 
@@ -97,7 +97,7 @@ class Logs(commands.Cog):
                                                "timestamp": str(datetime.utcnow().isoformat()), "url": link,
                                                "author": {}, "image": {},
                                                "thumbnail": {"url": str(message.author.avatar_url)},
-                                               "footer": {"text": "AIM | github.com/PuroSlavKing/Discord-Selfbot"},
+                                               "footer": {"text": "AIM | github.com/PuroSlavKing/Discord-AIM-SBot"},
                                                "fields": []}], "components": []}
             await send_webhook(config['LOGS']['edit_message_logger_webhook'], json)
 

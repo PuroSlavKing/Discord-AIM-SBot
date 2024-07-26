@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-version = 3.0
+version = 3.1
 lencommands = 0
 import os
 
@@ -27,7 +27,7 @@ from subprocess import Popen
 from time import sleep
 from webbrowser import open as webopen
 from threading import Thread
-from datetime import datetime
+from datetime import datetime, timedelta
 import random
 import json
 
@@ -66,8 +66,7 @@ ____  ___       .__
 """
 lencommands = 0
 clear()
-print(Intro)
-print(Fore.WHITE + 'Loading...')
+print(Fore.WHITE + 'Загрузка...')
 pref = config['GENERAL']['prefix']
 try:
     bot = commands.Bot(command_prefix=pref, case_insensitive=True, self_bot=True)
@@ -79,6 +78,7 @@ except Exception as e:
     webopen('https://github.com/PuroSlavKing/Discord-AIM-SBot', 2)
     while True: sleep(9)
 bot.remove_command('help')
+start_time = datetime.now()
 update = ''
 
 
@@ -108,7 +108,6 @@ def disco_status():
         except:
             pass
         sleep(5)
-
 
 @bot.event
 async def on_connect():
@@ -142,15 +141,19 @@ async def on_connect():
         pass
     clear()
     print(Intro)
-    print(
-        f"{color['Info_name']}Аккаунт: {color['Info_value']}{bot.user}{color['Info_name']}\nID: {color['Info_value']}{bot.user.id}{color['Info_name']}\nPrefix: {color['Info_value']}{pref}")
+    print(f"{color['Info_name']}Аккаунт: {color['Info_value']}{bot.user}")
+    print(f"{color['Info_name']}ID: {color['Info_value']}{bot.user.id}")
+    print(f"{color['Info_name']}Префикс: {color['Info_value']}{pref}")
+    print(f"{color['Info_name']}Время запуска: {color['Info_value']}{start_time.strftime('%Y-%m-%d %H:%M:%S')}")
+
     if float(requests.get(
-            'https://raw.githubusercontent.com/PuroSlavKing/Discord-Selfbot/main/cogs/version').text) > version:
+            'https://raw.githubusercontent.com/PuroSlavKing/Discord-AIM-SBot/main/cogs/version').text) > version:
         global update
         update = f':warning: Пожалуйста, обновите селфбота используя команду {pref}bot**\n**'
         print(
             f'{Fore.CYAN}Пожалуйста, обновите селфбота используя команду {Fore.LIGHTCYAN_EX}{pref}bot{Fore.RESET}{Fore.RED}\n')
         return
+
     print(Fore.RED)
 
 
