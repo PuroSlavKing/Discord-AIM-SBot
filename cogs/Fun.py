@@ -210,7 +210,7 @@ class Fun(commands.Cog):
                 except:
                     continue
                 return
-            webhook = await ctx.channel.create_webhook(name='Selfbot')
+            webhook = await ctx.channel.create_webhook(name='AIM')
 
     @commands.command(aliases=['fake_type', 'фейк_печать', 'фейкпечать', 'faketype'])
     async def faketyping(self, ctx, seconds: int, channel_id: int = None):
