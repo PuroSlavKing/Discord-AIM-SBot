@@ -25,7 +25,7 @@ async def send_webhook(webhook, json):
 
 def notification(message, title):
     if config['OTHER']['show_notifications']: notificationn.notify(message=message, title=title,
-                                                                   app_icon='cogs/icon.ico', app_name='Selfbot')
+                                                                   app_icon='cogs/icon.ico', app_name='AIM')
 
 
 class Logs(commands.Cog):
@@ -43,9 +43,6 @@ class Logs(commands.Cog):
                 except:
                     pass
 
-    #		if message.author.id==632164509842145280: #привет леночка
-    #			try: await message.add_reaction(random.choice(['❤️', '❣️', '💖', '💕', '💗', '💓', '💘', '💝', '💋', '🌹', '💞']))
-    #			except: pass
     @commands.Cog.listener()
     async def on_message_delete(self, message):
         if config['LOGS']['delete_message_logger'] and message.author.id != self.bot.user.id:
@@ -68,13 +65,13 @@ class Logs(commands.Cog):
                 attachments = ''
             else:
                 attachments = f'\nФайлы: {attachments}'
-            json = {"username": "Selfbot | Delete Message Logger",
-                    "avatar_url": "https://raw.githubusercontent.com/Its-LALOL/Discord-Selfbot/main/cogs/icon.png",
+            json = {"username": "AIM | Delete Message Logger",
+                    "avatar_url": "https://raw.githubusercontent.com/PuroSlavKing/Discord-SBot/main/cogs/icon.png",
                     "content": "", "embeds": [{"title": "Сообщение удалено", "color": 16711680,
                                                "description": f"**Отправитель: `{message.author}` (`{message.author.id}`)\n```{message.content}```{server}\nКанал: {channel}{attachments}**",
                                                "timestamp": str(datetime.utcnow().isoformat()), "url": "", "author": {},
                                                "image": {}, "thumbnail": {"url": str(message.author.avatar_url)},
-                                               "footer": {"text": "Selfbot | github.com/PuroSlavKing/Discord-Selfbot"},
+                                               "footer": {"text": "AIM | github.com/PuroSlavKing/Discord-Selfbot"},
                                                "fields": []}], "components": []}
             await send_webhook(config['LOGS']['delete_message_logger_webhook'], json)
 
@@ -93,14 +90,14 @@ class Logs(commands.Cog):
                 channel = f'{message.channel.mention} (`{message.channel.id}`)'
             except:
                 channel = '`Лс`'
-            json = {"username": "Selfbot | Edit Message Logger",
-                    "avatar_url": "https://raw.githubusercontent.com/Its-LALOL/Discord-Selfbot/main/cogs/icon.png",
+            json = {"username": "AIM | Edit Message Logger",
+                    "avatar_url": "https://raw.githubusercontent.com/PuroSlavKing/Discord-SBot/main/cogs/icon.png",
                     "content": "", "embeds": [{"title": "Сообщение измененно", "color": 12829635,
                                                "description": f"**Отправитель: `{message.author}` (`{message.author.id}`)\nБыло:```{message.content}```\nСтало:```{before.content}```{server}\nКанал: {channel}**",
                                                "timestamp": str(datetime.utcnow().isoformat()), "url": link,
                                                "author": {}, "image": {},
                                                "thumbnail": {"url": str(message.author.avatar_url)},
-                                               "footer": {"text": "Selfbot | github.com/PuroSlavKing/Discord-Selfbot"},
+                                               "footer": {"text": "AIM | github.com/PuroSlavKing/Discord-Selfbot"},
                                                "fields": []}], "components": []}
             await send_webhook(config['LOGS']['edit_message_logger_webhook'], json)
 

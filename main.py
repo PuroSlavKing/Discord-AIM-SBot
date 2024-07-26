@@ -290,12 +290,12 @@ async def help(ctx, cat=None):
 ''')
     else:
         await ctx.message.edit(
-            content=f'**__Selfbot__\n\n:x: Напишите `{pref}help` для просмотра всех категорий команд**')
+            content=f'**Напишите `{pref}help`, для просмотра всех категорий команд**')
 
 
 @bot.command(name='github', aliases=['selfbot', 'бот', 'селфбот', 'гит', 'гитхаб', 'git', 'hub'])
 async def __bot(ctx):
-    await ctx.message.edit(content='**__Selfbot__\n\nСсылка: https://github.com/PuroSlavKing/Discord-Selfbot **')
+    await ctx.message.edit(content='**Ссылка: https://github.com/PuroSlavKing/Discord-Selfbot**')
 
 
 @bot.command(aliases=['перезагрузка', 'стоп', 'перезагрузить', 'stop_all', 'остановить', 'reload', 'stop', 'reset'])
