@@ -76,7 +76,7 @@ except Exception as e:
     print(e)
     print(Fore.LIGHTBLUE_EX + '\nНа гитхабе селфбота написано как решить эту ошибку!!!')
     sleep(3)
-    webopen('https://github.com/PuroSlavKing/Discord-Selfbot', 2)
+    webopen('https://github.com/PuroSlavKing/Discord-AIM-SBot', 2)
     while True: sleep(9)
 bot.remove_command('help')
 update = ''
@@ -288,7 +288,7 @@ async def help(ctx, cat=None):
 
 @bot.command(name='github', aliases=['selfbot', 'бот', 'селфбот', 'гит', 'гитхаб', 'git', 'hub'])
 async def __bot(ctx):
-    await ctx.message.edit(content='**Ссылка: https://github.com/PuroSlavKing/Discord-Selfbot**')
+    await ctx.message.edit(content='**Ссылка: https://github.com/PuroSlavKing/Discord-AIM-SBot**')
 
 
 @bot.command(aliases=['перезагрузка', 'стоп', 'перезагрузить', 'stop_all', 'остановить', 'reload', 'stop', 'reset'])

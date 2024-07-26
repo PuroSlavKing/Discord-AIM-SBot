@@ -132,7 +132,7 @@ class Tools(commands.Cog):
                 f.write(f'[{message_time} | {message.author}]: {message.content}\n')
                 saved += 1
 
-            f.write("\nСсылка: https://github.com/PuroSlavKing/Discord-SBot")
+            f.write("\nСсылка: https://github.com/PuroSlavKing/Discord-AIM-SBot")
 
         await ctx.send(f"**:envelope: Успешно сохранил {saved} сообщений!**",
                        file=discord.File(f'messages_{ctx.channel.id}.txt'))
