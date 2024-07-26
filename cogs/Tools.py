@@ -6,6 +6,8 @@ import inspect
 import random, string
 from googletrans import Translator
 import json
+from datetime import datetime
+import pytz
 
 with open("config.json", "r", encoding="utf-8-sig") as f:
     config = json.load(f)
@@ -115,16 +117,23 @@ class Tools(commands.Cog):
             pinned += 1
         await ctx.send(f"**:pushpin: Успешно закрепил {pinned} сообщений!**")
 
-    @commands.command(aliases=['copy', 'сообщения', 'сохранить'])
+    @commands.command(aliases=['copy', 'сообщения', 'сохранить', 'логировать', 'логирование'])
     async def messages(self, ctx, amount: int = 30):
         await ctx.message.delete()
         messages = await ctx.channel.history(limit=amount).flatten()
         messages.reverse()
         saved = 0
+
+        msk_tz = pytz.timezone('Europe/Moscow')
+
         with open(f'messages_{ctx.channel.id}.txt', 'w', encoding='utf-8') as f:
             for message in messages:
-                f.write(f'[{message.author}]: {message.content}\n')
+                message_time = message.created_at.astimezone(msk_tz).strftime('%Y-%m-%d %H:%M:%S')
+                f.write(f'[{message_time} | {message.author}]: {message.content}\n')
                 saved += 1
+
+            f.write("\nСсылка: https://github.com/PuroSlavKing/Discord-SBot")
+
         await ctx.send(f"**:envelope: Успешно сохранил {saved} сообщений!**",
                        file=discord.File(f'messages_{ctx.channel.id}.txt'))
 
