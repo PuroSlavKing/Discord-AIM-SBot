@@ -2,6 +2,8 @@ from discord.ext import commands
 import discord
 from asyncio import sleep, create_task
 import string
+import asyncio
+import requests
 import random
 import json
 
@@ -30,7 +32,8 @@ async def check(ctx):
 
 async def create_channel(guild, name):
     try:
-        await guild.create_text_channel(name=name, topic='**https://github.com/PuroSlavKing/Discord-Selfbot** 𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫')
+        await guild.create_text_channel(name=name,
+                                        topic='**https://github.com/PuroSlavKing/Discord-Selfbot** 𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫')
     except:
         pass
 
@@ -105,7 +108,7 @@ class Nuke(commands.Cog):
                 create_task(create_webhook(channel, message))
 
     @commands.command()
-    async def spamroles(self, ctx, *, name='𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆'):
+    async def spamroles(self, ctx, *, name='𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒈔𒅒𒇫𒄆'):
         if await check(ctx):
             for i in range(50):
                 num1 = random.randint(0, 225)
@@ -121,10 +124,12 @@ class Nuke(commands.Cog):
         await ctx.message.delete()
         for i in range(amount):
             await ctx.send(
-                f'{text} ||{"".join(random.choices(string.ascii_uppercase + string.digits + string.ascii_lowercase, k=8))}||')
+                f'{text} ||{"".join(random.choices(string.ascii_uppercase + string.digits + string.ascii_lowercase, k=8))}||'
+            )
+            await asyncio.sleep(1)
         await ctx.send(f"**:speaking_head: Успешно отправил {amount} сообщений!**")
 
-    @commands.command(aliases=['пингалл'])
+    @commands.command(aliases=['pinga', 'пинга', 'пингалл'])
     async def pingall(self, ctx, amount: int = 1):
         await ctx.message.delete()
         for i in range(amount):
@@ -134,6 +139,7 @@ class Nuke(commands.Cog):
                 if len(text) >= 1950:
                     await ctx.send(text)
                     text = ''
+                    await asyncio.sleep(1)
                 if not i.bot and i.id != self.bot.user.id:
                     text += i.mention
                     pinged += 1
@@ -148,6 +154,7 @@ class Nuke(commands.Cog):
                 try:
                     await channel.send(
                         f'{text} ||{"".join(random.choices(string.ascii_uppercase + string.digits + string.ascii_lowercase, k=8))}||')
+                    await asyncio.sleep(1)
                 except:
                     pass
         await ctx.send(f"**:anger_right: Успешно отправил по {amount} сообщений в каждый канал!**")
@@ -185,7 +192,8 @@ class Nuke(commands.Cog):
                     id = response.json()['id']
                     requests.post(f"https://discord.com/api/v9/channels/{id}/messages",
                                   headers={'authorization': self.bot.http.token},
-                                  json={"content": "||@everyone|| **https://github.com/PuroSlavKing/Discord-Selfbot** # 𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆"})
+                                  json={
+                                      "content": "||@everyone|| **https://github.com/PuroSlavKing/Discord-Selfbot** # 𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆𒅒𒈔𒅒𒇫𒄆"})
                     break
                 elif response.status_code == 429:
                     seconds = response.json()['retry_after']
@@ -227,6 +235,7 @@ class Nuke(commands.Cog):
                 for i in range(2000):
                     text = text + chr(random.randrange(1114111))
                 await ctx.send(content=text)
+                await asyncio.sleep(1)
         elif cat == 'chains':
             text = ":chains:" * 199
             for i in range(amount):
