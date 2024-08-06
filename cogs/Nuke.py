@@ -129,6 +129,15 @@ class Nuke(commands.Cog):
             await asyncio.sleep(1)
         await ctx.send(f"**:speaking_head: Успешно отправил {amount} сообщений!**")
 
+    @commands.command(aliases=['tspam', 'timed_spam'])
+    async def timedspam(self, ctx, delay: int, amount: int, *, text):
+        await ctx.message.delete()
+        for i in range(amount):
+            await ctx.send(
+                f'{text} ||{"".join(random.choices(string.ascii_uppercase + string.digits + string.ascii_lowercase, k=8))}||')
+            await asyncio.sleep(delay)
+        await ctx.send(f"**:speaking_head: Успешно отправил {amount} сообщений с задержкой {delay} секунд!**")
+
     @commands.command(aliases=['pinga', 'пинга', 'пингалл'])
     async def pingall(self, ctx, amount: int = 1):
         await ctx.message.delete()
